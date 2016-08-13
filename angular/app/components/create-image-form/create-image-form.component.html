@@ -1,0 +1,63 @@
+
+<section class="content-header">
+    <h1>Images
+        <small>Images used for map icons</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref="app.image_list"> <i class="fa fa-picture-o"></i> Images</a></li>
+        <li class="active"> <i class="fa fa-plus"></i> Create Image Form</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    Create Image Form
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <form role="form" ng-submit="vm.submit()" novalidate>
+                <div class="box-body">
+
+                        <div ng-class="(vm.errors.title[0])? 'form-group has-error': 'form-group' ">
+                            <lable>Image Title</lable>
+                            <input type="text" ng-model="vm.form_title" class="form-control" placeholder="Image Title ...">
+                            <span class="help-block" ng-show="vm.errors.title[0]">
+                                {{ vm.errors.title[0] }}
+                            </span>
+                        </div>
+                        <div ng-class="(vm.errors.path[0])? 'form-group has-error': 'form-group' ">
+                            <lable>Image Path</lable>
+                            <input type="text" class="form-control" ng-model="vm.form_path" placeholder="Image Path ..." disabled id="img_src">
+                            <span class="help-block" ng-show="vm.errors.path[0]">
+                                {{ vm.errors.path[0] }}
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <upload-image input="img_src" title="Image Upload"></upload-image>
+                        </div>
+                    <div ng-class="(vm.errors.description[0])? 'form-group has-error': 'form-group' ">
+                        <lable>Image Description</lable>
+                        <textarea class="form-control" rows="3" ng-model="vm.form_desc"></textarea>
+                        <span class="help-block" ng-show="vm.errors.description[0]">
+                                {{ vm.errors.description[0] }}
+                        </span>
+                    </div>
+
+
+                </div>
+                <div class="box-footer">
+                    <a ui-sref="app.image_list" class="btn btn-danger"><i class="fa fa-angle-double-left"></i> Back</a>
+                    <button type="submit" class="btn btn-primary pull-right"> <i class="fa fa-plus"></i> Add New </button>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
