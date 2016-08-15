@@ -1,0 +1,81 @@
+
+<section class="content-header">
+    <h1>Levels </h1>
+    <small>Map Point levels</small>
+    <ol class="breadcrumb">
+        <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active"><a ui-sref="app.level_list"><i class="fa fa-level-up"></i> Levels</a></li>
+        <li class="active">Create Level</li>
+    </ol>
+</section>
+
+
+<section class="content">
+    <form ng-submit="vm.submit()">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Create Level Form</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                            class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+
+                <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+                    <h4>{{alert.title}}</h4>
+                    <p>{{alert.msg}}</p>
+                </div>
+
+                <div ng-class="(vm.errors.title[0])? 'form-group has-error': 'form-group' ">
+                    <label for="title">Title :</label>
+                    <input type="text" ng-model="vm.title" class="form-control" placeholder="Title..." id="title">
+                    <span class="help-block" ng-if="vm.errors.title[0]" ng-repeat="error in vm.errors.title">
+                        {{ error }}
+                    </span>
+                </div>
+
+                <div ng-class="(vm.errors.level_start[0])? 'form-group has-error': 'form-group' ">
+                    <label for="level_start">Level Start :</label>
+                    <input type="number" ng-model="vm.level_start" class="form-control" placeholder="Title..." id="level_start">
+                    <span class="help-block" ng-if="vm.errors.level_start[0]" ng-repeat="error in vm.errors.level_start">
+                        {{ error }}
+                    </span>
+                </div>
+
+                <div ng-class="(vm.errors.level_end[0])? 'form-group has-error': 'form-group' ">
+                    <label for="level_end">Level End :</label>
+                    <input type="number" ng-model="vm.level_end" class="form-control" placeholder="level_end..." id="level_end">
+                    <span class="help-block" ng-if="vm.errors.level_end[0]" ng-repeat="error in vm.errors.level_end">
+                        {{ error }}
+                    </span>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="type" ng-model="vm.type" value="icon" checked="true"> Icon
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="type" ng-model="vm.type" value="level"> Level
+                    </label>
+
+                </div>
+                slider
+                <div ui-slider="{range: true}" min="0" max="100" step="0.01" use-decimals ng-model="vm.slider"></div>
+                slider
+                <div ng-class="(vm.errors.description[0])? 'form-group has-error': 'form-group' ">
+                    <label for="description">Description :</label>
+                    <textarea class="form-control" id="description" rows="3" ng-model="vm.description"></textarea>
+                    <span class="help-block" ng-if="vm.errors.description[0]" ng-repeat="error in vm.errors.description">
+                        {{ error }}
+                    </span>
+                </div>
+            </div>
+            <div class="box-footer">
+
+            </div>
+        </div>
+    </form>
+</section>
