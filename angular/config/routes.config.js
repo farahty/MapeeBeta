@@ -52,6 +52,39 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
           }
         }
       })
+      .state('app.level_create', {
+        url: '/level/create',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<level-form></level-form>'
+          }
+        }
+      })
+      .state('app.level_list', {
+        url: '/level',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<level-list></level-list>'
+          }
+        }
+      })
+      .state('app.level_show', {
+        url: '/level/show',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<level-show></level-show>'
+          }
+        }
+      })
       .state('app.image_list', {
         url: '/image',
         data: {

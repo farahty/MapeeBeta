@@ -22,8 +22,8 @@ return [
       ],
       'tests' => [
             'enable' => [
-                'components'      => true,
-                'services'        => true,
+                'components'      => false,
+                'services'        => false,
             ],
             'source' => [
                 'root'            => 'tests/angular/',

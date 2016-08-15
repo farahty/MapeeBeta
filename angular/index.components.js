@@ -1,3 +1,12 @@
+import {CssClassShowComponent} from './app/components/css-class-show/css-class-show.component';
+import {CssClassListComponent} from './app/components/css-class-list/css-class-list.component';
+import {CssClassFormComponent} from './app/components/css-class-form/css-class-form.component';
+import {IconCategoryShowComponent} from './app/components/icon-category-show/icon-category-show.component';
+import {IconCategoryListComponent} from './app/components/icon-category-list/icon-category-list.component';
+import {IconCategoryFormComponent} from './app/components/icon-category-form/icon-category-form.component';
+import {LevelShowComponent} from './app/components/level-show/level-show.component';
+import {LevelListComponent} from './app/components/level-list/level-list.component';
+import {LevelFormComponent} from './app/components/level-form/level-form.component';
 import {ImageListComponent} from './app/components/image-list/image-list.component';
 import {CreateImageFormComponent} from './app/components/create-image-form/create-image-form.component';
 import {UploadImageComponent} from './app/components/upload-image/upload-image.component';
@@ -21,6 +30,15 @@ import { LoginFormComponent } from './app/components/login-form/login-form.compo
 import { RegisterFormComponent } from './app/components/register-form/register-form.component'
 
 angular.module('app.components')
+	.component('cssClassShow', CssClassShowComponent)
+	.component('cssClassList', CssClassListComponent)
+	.component('cssClassForm', CssClassFormComponent)
+	.component('iconCategoryShow', IconCategoryShowComponent)
+	.component('iconCategoryList', IconCategoryListComponent)
+	.component('iconCategoryForm', IconCategoryFormComponent)
+	.component('levelShow', LevelShowComponent)
+	.component('levelList', LevelListComponent)
+	.component('levelForm', LevelFormComponent)
 	.component('imageList', ImageListComponent)
 	.component('createImageForm', CreateImageFormComponent)
 	.component('uploadImage', UploadImageComponent)

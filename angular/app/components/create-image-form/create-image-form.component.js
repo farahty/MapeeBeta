@@ -3,6 +3,7 @@ class CreateImageFormController{
         'ngInject';
         this.API = API
         this.errors = []
+        this.alerts = []
     }
 
     submit(){
@@ -12,7 +13,13 @@ class CreateImageFormController{
             description: this.form_desc,
             path: angular.element("#img_src").val()
         }
-        images.post(obj).then(() => {} , (res) => {
+        images.post(obj).then(() => {
+            this.alerts = []
+            this.errors = []
+            this.alerts.push({ type: 'success', 'title': 'Success!', msg: 'Image has been added.' })
+        } , (res) => {
+            this.alerts = []
+            this.alerts.push({ type: 'error', 'title': 'Error!', msg: res.data.message })
             this.errors = res.data.errors
         })
 
