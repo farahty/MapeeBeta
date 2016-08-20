@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MapIcon;
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Models\Image;
 use Auth;
+use App\Http\Requests;
 
-
-class ImageController extends Controller
+class MapIconCatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,19 +16,18 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::with('author')->get();
-        return response()->success(compact('images'));
+        $points = MapIcon::all();
+        return response()->success(compact('points'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-
+        //
     }
 
     /**
@@ -40,15 +38,6 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-
-        $this->validate($request,Image::rules());
-        $obj = new Image();
-        $obj->title = $request->title;
-        $obj->description = $request->description;
-        $obj->path = $request->path;
-        $obj->user_id = Auth::user()->id;
-        $obj->save();
-        return response()->success(compact('obj'));
 
     }
 
@@ -94,26 +83,9 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        Image::destroy($id);
+        MapIcon::destroy($id);
 
         return response()->success('success');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function upload(Request $request){
-        if ($request->file('file')->isValid()) {
-            $destinationPath = 'img/uploads';
-            $extension = $request->file('file')->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'.'.$extension;
-            $request->file('file')->move($destinationPath, $fileName);
-            $img_src = "/".$destinationPath."/".$fileName;
-            return response()->success(compact('img_src'));
-        }
-        return response()->error('file note valid');
-    }
 }

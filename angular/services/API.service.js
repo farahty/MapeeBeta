@@ -1,5 +1,5 @@
 export class APIService {
-  constructor (Restangular, $window) {
+  constructor (Restangular, $window ,toastr) {
     'ngInject'
     // content negotiation
     var headers = {
@@ -13,9 +13,9 @@ export class APIService {
         .setDefaultHeaders(headers)
         .setErrorInterceptor(function (response) {
           if (response.status === 422) {
-            // for (var error in response.data.errors) {
-            // return ToastService.error(response.data.errors[error][0])
-            // }
+             for (var error in response.data.errors) {
+              toastr.error(response.data.errors[error][0] , 'Error!',{progressBar :true})
+             }
           }
         })
         .addFullRequestInterceptor(function (element, operation, what, url, headers) {

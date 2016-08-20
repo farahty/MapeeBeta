@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CssClass;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Models\Image;
 use Auth;
 
-
-class ImageController extends Controller
+class CssClassController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,19 +16,18 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::with('author')->get();
-        return response()->success(compact('images'));
+        $css = CssClass::with('author')->get();
+        return response()->success(compact('css'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-
+        //
     }
 
     /**
@@ -40,16 +38,13 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-
-        $this->validate($request,Image::rules());
-        $obj = new Image();
+        $this->validate($request,CssClass::rules());
+        $obj = new CssClass();
         $obj->title = $request->title;
         $obj->description = $request->description;
-        $obj->path = $request->path;
-        $obj->user_id = Auth::user()->id;
+        $obj->user_id = 7;
         $obj->save();
         return response()->success(compact('obj'));
-
     }
 
     /**
@@ -94,26 +89,8 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        Image::destroy($id);
+        CssClass::destroy($id);
 
         return response()->success('success');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function upload(Request $request){
-        if ($request->file('file')->isValid()) {
-            $destinationPath = 'img/uploads';
-            $extension = $request->file('file')->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'.'.$extension;
-            $request->file('file')->move($destinationPath, $fileName);
-            $img_src = "/".$destinationPath."/".$fileName;
-            return response()->success(compact('img_src'));
-        }
-        return response()->error('file note valid');
     }
 }

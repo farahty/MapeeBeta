@@ -1,0 +1,110 @@
+<section class="content-header">
+    <h1>Levels </h1> <small>Map Point</small>
+    <ol class="breadcrumb">
+        <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active"> <a ui-sref="app.level_list"><i class="fa fa-map-marker"></i> Map Points</a></li>
+        <li class="active">Create Map Point</li>
+    </ol>
+</section>
+
+
+<section class="content">
+    <form ng-submit="vm.submit()">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Create Level Form</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                            class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+
+                <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+                    <h4>{{alert.title}}</h4>
+                    <p>{{alert.msg}}</p>
+                </div>
+
+                <div ng-class="(vm.errors.title[0])? 'form-group has-error': 'form-group' ">
+                    <label for="title">Title :</label>
+                    <input type="text" ng-model="vm.title" class="form-control" placeholder="Title..." id="title">
+                    <span class="help-block" ng-if="vm.errors.title[0]" ng-repeat="error in vm.errors.title">
+                        {{ error }}
+                    </span>
+                </div>
+
+                <div ng-class="(vm.errors.lat[0])? 'form-group has-error': 'form-group' ">
+                    <label for="lat">lat :</label>
+                    <input type="number" ng-model="vm.lat" class="form-control" placeholder="Lat..." id="lat">
+                    <span class="help-block" ng-if="vm.errors.lat[0]" ng-repeat="error in vm.errors.title">
+                        {{ error }}
+                    </span>
+                </div>
+
+                <div ng-class="(vm.errors.long[0])? 'form-group has-error': 'form-group' ">
+                    <label for="long">long :</label>
+                    <input type="number" ng-model="vm.long" class="form-control" placeholder="long..." id="long">
+                    <span class="help-block" ng-if="vm.errors.long[0]" ng-repeat="error in vm.errors.title">
+                        {{ error }}
+                    </span>
+                </div>
+
+                <div ng-class="(vm.errors.cat_id[0])? 'form-group has-error': 'form-group' ">
+                    <label for="cat_id">cat_id :</label>
+                    <select class="form-control" ng-model="vm.cat_id" data-placeholder="Pick a number" id="cat_id">
+                        <option ng-repeat="item in vm.select_cat" value="{{ item.id }}">{{item.title}}</option>
+                    </select>
+                    <span class="help-block" ng-if="vm.errors.cat_id[0]" ng-repeat="error in vm.errors.title">
+                        {{ error }}
+                    </span>
+                </div>
+
+
+                <div ng-class="(vm.errors.icon_id[0])? 'form-group has-error': 'form-group' ">
+                    <label for="icon_id">icon_id :</label>
+                    <select class="form-control" theme="bootstrap" ng-model="vm.icon_id" data-placeholder="Pick a number" id="icon_id">
+                        <option ng-repeat="item in vm.select_icon" value="{{ item.id }}">{{item.title}}</option>
+                    </select>
+                    <span class="help-block" ng-if="vm.errors.icon_id[0]" ng-repeat="error in vm.errors.title">
+                        {{ error }}
+                    </span>
+                </div>
+
+                <div ng-class="(vm.errors.title_level_id[0])? 'form-group has-error': 'form-group' ">
+                    <label for="title_level_id">title_level_id :</label>
+                    <select class="form-control" ng-model="vm.title_level_id" data-placeholder="Pick a number" id="title_level_id">
+                        <option ng-repeat="item in vm.select_level_title" value="{{ item.id }}">{{item.title}}</option>
+
+                    </select>
+                    <span class="help-block" ng-if="vm.errors.title_level_id[0]" ng-repeat="error in vm.errors.title">
+                        {{ error }}
+                    </span>
+                </div>
+
+                <div ng-class="(vm.errors.icon_level_id[0])? 'has-error form-group': 'form-group' ">
+                    <label for="icon_level_id">icon_level_id :</label>
+                    <select class="form-control" ng-model="vm.icon_level_id" data-placeholder="Pick a number" id="icon_level_id">
+                        <option ng-repeat="item in vm.select_level_icon" value="{{ item.id }}">{{item.title}}</option>
+                    </select>
+                    <span class="help-block" ng-if="vm.errors.icon_level_id[0]" ng-repeat="error in vm.errors.title">
+                        {{ error }}
+                    </span>
+                </div>
+
+                <div ng-class="(vm.errors.description[0])? 'form-group has-error': 'form-group' ">
+                    <label for="description">Description :</label>
+                    <textarea class="form-control" id="description" rows="3" ng-model="vm.description"></textarea>
+                    <span class="help-block" ng-if="vm.errors.description[0]" ng-repeat="error in vm.errors.description">
+                        {{ error }}
+                    </span>
+                </div>
+            </div>
+            <div class="box-footer">
+                <a ui-sref="app.level_list" class="btn btn-danger"><i class="fa fa-angle-double-left"></i> Back</a>
+                <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New
+                </button>
+            </div>
+        </div>
+    </form>
+</section>

@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Level;
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Models\Image;
 use Auth;
+use App\Http\Requests;
 
-
-class ImageController extends Controller
+class LevelController extends Controller
 {
+    /**
+     * LevelController constructor.
+     */
+    public function __construct()
+    {
+        //$this->middleware('permission:manage.levels', ['except' => ['index','show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,19 +24,18 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::with('author')->get();
-        return response()->success(compact('images'));
+        $levels = Level::with('author')->get();
+        return response()->success(compact('levels'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-
+        //
     }
 
     /**
@@ -40,16 +46,16 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-
-        $this->validate($request,Image::rules());
-        $obj = new Image();
+        $this->validate($request,Level::rules());
+        $obj = new Level();
         $obj->title = $request->title;
         $obj->description = $request->description;
-        $obj->path = $request->path;
+        $obj->level_start = $request->level_start;
+        $obj->level_end = $request->level_end;
+        $obj->type = $request->type;
         $obj->user_id = Auth::user()->id;
         $obj->save();
         return response()->success(compact('obj'));
-
     }
 
     /**
@@ -94,26 +100,8 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        Image::destroy($id);
+        Level::destroy($id);
 
         return response()->success('success');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function upload(Request $request){
-        if ($request->file('file')->isValid()) {
-            $destinationPath = 'img/uploads';
-            $extension = $request->file('file')->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'.'.$extension;
-            $request->file('file')->move($destinationPath, $fileName);
-            $img_src = "/".$destinationPath."/".$fileName;
-            return response()->success(compact('img_src'));
-        }
-        return response()->error('file note valid');
     }
 }

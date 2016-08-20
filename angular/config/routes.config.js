@@ -27,7 +27,7 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         main: {}
       },
       data: {
-        bodyClass: 'hold-transition skin-blue sidebar-mini'
+        bodyClass: 'hold-transition skin-red sidebar-mini'
       }
     })
     .state('app.landing', {
@@ -49,6 +49,72 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         views: {
           'main@app': {
             template: '<create-image-form></create-image-form>'
+          }
+        }
+      })
+      .state('app.map_point_create', {
+        url: '/map-point/create',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<map-point-create></map-point-create>'
+          }
+        }
+      })
+      .state('app.map_point_list', {
+        url: '/map-point',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<map-point-list></map-point-list>'
+          }
+        }
+      })
+      .state('app.map_point_show', {
+        url: '/map-point/show',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<map-point-show></map-point-show>'
+          }
+        }
+      })
+      .state('app.css_class_list', {
+        url: '/css-class',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<css-class-list></css-class-list>'
+          }
+        }
+      })
+      .state('app.css_class_create', {
+        url: '/css-class/create',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<css-class-form></css-class-form>'
+          }
+        }
+      })
+      .state('app.css_class_show', {
+        url: '/css-class/show',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<css-class-show></css-class-show>'
           }
         }
       })
@@ -85,6 +151,7 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
           }
         }
       })
+
       .state('app.image_list', {
         url: '/image',
         data: {

@@ -1,3 +1,7 @@
+import {MapPointEditComponent} from './app/components/map-point-edit/map-point-edit.component';
+import {MapPointShowComponent} from './app/components/map-point-show/map-point-show.component';
+import {MapPointListComponent} from './app/components/map-point-list/map-point-list.component';
+import {MapPointCreateComponent} from './app/components/map-point-create/map-point-create.component';
 import {CssClassShowComponent} from './app/components/css-class-show/css-class-show.component';
 import {CssClassListComponent} from './app/components/css-class-list/css-class-list.component';
 import {CssClassFormComponent} from './app/components/css-class-form/css-class-form.component';
@@ -30,6 +34,10 @@ import { LoginFormComponent } from './app/components/login-form/login-form.compo
 import { RegisterFormComponent } from './app/components/register-form/register-form.component'
 
 angular.module('app.components')
+	.component('mapPointEdit', MapPointEditComponent)
+	.component('mapPointShow', MapPointShowComponent)
+	.component('mapPointList', MapPointListComponent)
+	.component('mapPointCreate', MapPointCreateComponent)
 	.component('cssClassShow', CssClassShowComponent)
 	.component('cssClassList', CssClassListComponent)
 	.component('cssClassForm', CssClassFormComponent)

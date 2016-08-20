@@ -15,8 +15,8 @@ angular.module('app.services', [])
 angular.module('app.config', [])
 angular.module('app.components', [
   'ui.router', 'angular-loading-bar',
-  'restangular', 'ngStorage', 'satellizer',
-  'ui.bootstrap', 'chart.js', 'mm.acl', 'datatables',
-  'datatables.bootstrap', 'checklist-model','angularFileUpload',
-  'colorpicker.module', 'wysiwyg.module'
+  'restangular', 'ngStorage','satellizer',
+  'ui.bootstrap', 'mm.acl', 'datatables',
+  'datatables.bootstrap','angularFileUpload',
+   'toastr'
 ])

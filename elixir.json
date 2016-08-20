@@ -7,7 +7,7 @@
         "less": {
             "folder": "../../angular/"
         },
-        "lteSkin": "skin-blue.css"
+        "lteSkin": "skin-red.css"
     },
     "fonts": {
         "outputFolder": "public/fonts"
