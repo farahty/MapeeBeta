@@ -18,5 +18,5 @@ angular.module('app.components', [
   'restangular', 'ngStorage','satellizer',
   'ui.bootstrap', 'mm.acl', 'datatables',
   'datatables.bootstrap','angularFileUpload',
-   'toastr'
+   'toastr','nemLogging','ui-leaflet'
 ])
