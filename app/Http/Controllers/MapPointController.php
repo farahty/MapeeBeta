@@ -39,18 +39,18 @@ class MapPointController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,MapPoint::rules());
-        $obj = new MapPoint();
-        $obj->title = $request->title;
-        $obj->description = $request->description;
-        $obj->lat = $request->lat;
-        $obj->long = $request->long;
-        $obj->icon_id = $request->icon_id;
-        $obj->cat_id = $request->cat_id;
-        $obj->title_level_id = $request->title_level_id;
-        $obj->icon_level_id = $request->icon_level_id;
-        $obj->user_id = Auth::user()->id;
-        $obj->save();
-        return response()->success(compact('obj'));
+        $point = new MapPoint();
+        $point->title = $request->title;
+        $point->description = $request->description;
+        $point->lat = $request->lat;
+        $point->long = $request->long;
+        $point->icon_id = $request->icon_id;
+        $point->cat_id = $request->cat_id;
+        $point->title_level_id = $request->title_level_id;
+        $point->icon_level_id = $request->icon_level_id;
+        $point->user_id = Auth::user()->id;
+        $point->save();
+        return response()->success(compact('point'));
     }
 
     /**

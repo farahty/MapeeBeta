@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
 
-class MapIconCatController extends Controller
+class MapIconController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,6 +28,11 @@ class MapIconCatController extends Controller
     public function create()
     {
         //
+    }
+
+    public function getIconsByCat($id){
+            $iconcat = MapIcon::where('cat_id', $id)->get();
+            return response()->success(compact('iconcat'));
     }
 
     /**
