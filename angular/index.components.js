@@ -1,3 +1,7 @@
+import {MapIconEditComponent} from './app/components/map_icon_edit/map_icon_edit.component';
+import {MapIconShowComponent} from './app/components/map_icon_show/map_icon_show.component';
+import {MapIconListComponent} from './app/components/map_icon_list/map_icon_list.component';
+import {MapIconCreateComponent} from './app/components/map_icon_create/map_icon_create.component';
 import {MapPointEditComponent} from './app/components/map-point-edit/map-point-edit.component';
 import {MapPointShowComponent} from './app/components/map-point-show/map-point-show.component';
 import {MapPointListComponent} from './app/components/map-point-list/map-point-list.component';
@@ -34,6 +38,10 @@ import { LoginFormComponent } from './app/components/login-form/login-form.compo
 import { RegisterFormComponent } from './app/components/register-form/register-form.component'
 
 angular.module('app.components')
+	.component('mapIconEdit', MapIconEditComponent)
+	.component('mapIconShow', MapIconShowComponent)
+	.component('mapIconList', MapIconListComponent)
+	.component('mapIconCreate', MapIconCreateComponent)
 	.component('mapPointEdit', MapPointEditComponent)
 	.component('mapPointShow', MapPointShowComponent)
 	.component('mapPointList', MapPointListComponent)

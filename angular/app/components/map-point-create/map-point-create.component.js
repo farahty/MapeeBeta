@@ -3,7 +3,6 @@ class MapPointCreateController{
         'ngInject';
         this.API = API
         this.errors = []
-        this.alerts = []
         this.select_cat = []
         this.select_icon = []
         this.select_level_icon = []
@@ -25,7 +24,7 @@ class MapPointCreateController{
                 maxZoom: 14,
                 path: {weight: 10,color: '#800000',opacity: 1}
             }
-        this.center = {lat: 51.505,lng: -0.09,zoom: 8}
+        this.center = {lat: 32,lng: 35.2,zoom: 8}
         this.markers = new Array()
         $scope.$on("leafletDirectiveMap.click" , (event, args) => {           
             let leafEvent = args.leafletEvent
@@ -64,12 +63,8 @@ class MapPointCreateController{
             icon_level_id : this.icon_level_id
         }
         this.API.all('points').post(obj).then(() => {
-            this.alerts = []
             this.errors = []
-            this.alerts.push({ type: 'success', 'title': 'Success!', msg: 'Level has been added.' })
         } , (res) => {
-            this.alerts = []
-            this.alerts.push({ type: 'error', 'title': 'Error!', msg: res.data.message })
             this.errors = res.data.errors
         })
     }

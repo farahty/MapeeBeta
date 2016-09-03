@@ -85,6 +85,39 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
           }
         }
       })
+      .state('app.map_icon_list', {
+        url: '/map-icon',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<map-icon-list></map-icon-list>'
+          }
+        }
+      })
+      .state('app.map_icon_create', {
+        url: '/map-icon/create',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<map-icon-create></map-icon-create>'
+          }
+        }
+      })
+      .state('app.map-icon_show', {
+        url: '/map-icon/show',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<map-icon-show></map-icon-show>'
+          }
+        }
+      })
       .state('app.css_class_list', {
         url: '/css-class',
         data: {

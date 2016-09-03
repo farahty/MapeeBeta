@@ -12,10 +12,11 @@ export class APIService {
         .setBaseUrl('/api/')
         .setDefaultHeaders(headers)
         .setErrorInterceptor(function (response) {
-          if (response.status === 422) {
-             for (var error in response.data.errors) {
-              toastr.error(response.data.errors[error][0] , 'Error!',{progressBar :true})
-             }
+          toastr.error(response.data.message , 'Error!',{progressBar :true})
+		  if (response.status === 422) {
+            // for (var error in response.data.errors) {
+             // toastr.error(response.data.errors[error][0] , 'Error!',{progressBar :true})
+             //}
           }
         })
         .addFullRequestInterceptor(function (element, operation, what, url, headers) {
@@ -25,12 +26,12 @@ export class APIService {
           }
         })
         .addResponseInterceptor(function (response, operation, what) {
+			
           if (operation === 'getList') {
             var newResponse = response.data[what]
             newResponse.error = response.error
             return newResponse
           }
-
           return response
         })
     })

@@ -1,9 +1,9 @@
 class CreateImageFormController{
-    constructor(API){
+    constructor(API,toastr){
         'ngInject';
         this.API = API
         this.errors = []
-        this.alerts = []
+		this.toastr=toastr
     }
 
     submit(){
@@ -14,13 +14,10 @@ class CreateImageFormController{
             path: angular.element("#img_src").val()
         }
         images.post(obj).then(() => {
-            this.alerts = []
             this.errors = []
-            this.alerts.push({ type: 'success', 'title': 'Success!', msg: 'Image has been added.' })
         } , (res) => {
-            this.alerts = []
-            this.alerts.push({ type: 'error', 'title': 'Error!', msg: res.data.message })
             this.errors = res.data.errors
+			this.toastr.success('Image Created Sucessfully','Success',{progressBar :true})
         })
 
     }
