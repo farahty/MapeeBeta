@@ -20,9 +20,9 @@
         </div>
         <div class="box-body">
             <input type="text" ng-model="vm.keyword.title" >
-        <openlayers height="480px" width="640px">
+        <openlayers height="480px" class="form-conrol">
             <ol-marker ng-repeat="marker in vm.markers|filter:vm.keyword" 
-            name="marker.title" lat="marker.lat" lon="marker.lng"></ol-marker>
+             lat="marker.lat" lon="marker.lng"></ol-marker>
         </openlayers>
 
         </div>
