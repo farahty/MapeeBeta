@@ -36,6 +36,9 @@ Elixir.extend('bower', function (jsOutputFile, jsOutputFolder, cssOutputFile, cs
         },
         AdminLTE: {
           'ignore': true
+        },
+        openlayers : {
+          main : ['ol.js']
         }
       }
     }))
@@ -74,6 +77,9 @@ Elixir.extend('bower', function (jsOutputFile, jsOutputFolder, cssOutputFile, cs
         },
         'angular-bootstrap': {
           'ignore': true
+        },
+        openlayers : {
+          main : ['ol.css']
         }
       }
     }))

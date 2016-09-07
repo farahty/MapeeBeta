@@ -19,10 +19,11 @@
             </div>
         </div>
         <div class="box-body">
-            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
-                <h4>{{alert.title}}</h4>
-                <p>{{alert.msg}}</p>
-            </div>
+            <input type="text" ng-model="vm.keyword.title" >
+        <openlayers height="480px" width="640px">
+            <ol-marker ng-repeat="marker in vm.markers|filter:vm.keyword" 
+            name="marker.title" lat="marker.lat" lon="marker.lng"></ol-marker>
+        </openlayers>
 
         </div>
         <div class="box-footer">
