@@ -9,6 +9,7 @@
         <a href="javascript:void(0)"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
+
     <form action="#" method="get" class="sidebar-form">
       <div class="input-group">
         <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -18,19 +19,23 @@
         </span>
       </div>
     </form>
+
     <ul class="sidebar-menu">
       <li class="header">MAIN NAVIGATION</li>
-      <li>
+      <li ng-class="{active: vm.isActive('app.landing')}">
         <a ui-sref='app.landing'>
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
+      <li class="header">Users Settings</li>
       <li class="treeview" ng-show="vm.can('manage.users')">
         <a href="javascript:void(0)">
           <i class="fa fa-users"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.userlist'><i class="fa fa-circle-o"></i> <span>User List</span></a></li>
+          <li ng-show="vm.can('manage.users')"  ng-class="{active: vm.isActive('app.userlist')}">
+            <a ui-sref='app.userlist'><i class="fa fa-circle-o"></i> <span>User List</span></a>
+          </li>
         </ul>
       </li>
       <li class="treeview" ng-show="vm.can('manage.roles') || vm.can('manage.permissions')">
@@ -38,44 +43,44 @@
           <i class="fa fa-cog"></i> <span>Settings</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li ng-show="vm.can('manage.roles')"><a ui-sref='app.userroles'><i class="fa fa-circle-o"></i> <span>User Roles</span></a></li>
-          <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.userpermissions'><i class="fa fa-circle-o"></i> <span>User Permissions</span></a></li>
+          <li ng-show="vm.can('manage.roles')" ng-class="{active: vm.isActive('app.userroles')}"><a ui-sref='app.userroles'><i class="fa fa-circle-o"></i> <span>User Roles</span></a></li>
+          <li ng-show="vm.can('manage.permissions')" ng-class="{active: vm.isActive('app.userpermissions')}"><a ui-sref='app.userpermissions'><i class="fa fa-circle-o"></i> <span>User Permissions</span></a></li>
         </ul>
       </li>
-
-      <li>
+      <li class="header">Map Settings</li>
+      <li  ng-show="vm.can('manage.images')" ng-class="{active: vm.isActive('app.image_list')}">
         <a ui-sref='app.image_list'>
           <i class="ionicons ion-images"></i> <span>Images</span>
         </a>
       </li>
 
-      <li>
+      <li  ng-show="vm.can('manage.levels')" ng-class="{active: vm.isActive('app.level_list')}">
         <a ui-sref='app.level_list'>
           <i class="ionicons ion-levels"></i> <span>Levels</span>
         </a>
       </li>
 
-      <li>
+      <li  ng-show="vm.can('manage.classes')"  ng-class="{active: vm.isActive('app.css_class_list')}">
         <a ui-sref='app.css_class_list'>
           <i class="fa fa-css3"></i> <span>CSS Class</span>
         </a>
       </li>
 
-      <li>
+      <li ng-show="vm.can('manage.mappoint')"  ng-class="{active: vm.isActive('app.map_point_list')}">
         <a ui-sref='app.map_point_list'>
           <i class="fa fa-map"></i> <span>Map Point</span>
         </a>
       </li>
-	  
-      <li>
+
+      <li ng-show="vm.can('manage.iconcategory')" ng-class="{active: vm.isActive('app.map_point_list')}">
         <a ui-sref='app.map_point_list'>
-          <i class="fa fa-map"></i> <span>Icon Category</span>
+          <i class="ionicons ion-ios-albums"></i> <span>Icon Category</span>
         </a>
       </li>
 
-      <li>
+      <li ng-show="vm.can('manage.mapicon')" ng-class="{active: vm.isActive('app.map_icon_list')}">
         <a ui-sref='app.map_icon_list'>
-          <i class="fa fa-map"></i> <span>Map Icon</span>
+          <i class="ionicons ion-ios-analytics"></i> <span>Map Icon</span>
         </a>
       </li>
 

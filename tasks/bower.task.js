@@ -80,6 +80,9 @@ Elixir.extend('bower', function (jsOutputFile, jsOutputFolder, cssOutputFile, cs
         },
         openlayers : {
           main : ['ol.css']
+        },
+        'angular-openlayers-directive' : {
+          main : ['dist/angular-openlayers-directive.css']
         }
       }
     }))

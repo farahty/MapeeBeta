@@ -16,7 +16,19 @@ class MapPointController extends Controller
      */
     public function index()
     {
-        $points = MapPoint::all();
+        $points = MapPoint::with('icon','icon.image')->get();
+        // $features = array();
+        // foreach ($points as $key => $value) {
+        //   $features[] = array(
+        //             'type' => 'Feature',
+        //             'geometry' => array('type' => 'Point', 'coordinates' => array((float)$value['lat'],(float)$value['long'])),
+        //             'properties' => array('name' => $value['title'], 'id' => $value['id']),
+        //             );
+        //
+        // }
+        // $allfeatures = array('type' => 'FeatureCollection', 'features' => $features);
+        //return json_encode($allfeatures, JSON_PRETTY_PRINT);
+        //return response()->success(compact('allfeatures'));
         return response()->success(compact('points'));
     }
 

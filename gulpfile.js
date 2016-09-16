@@ -1,13 +1,8 @@
-process.env.DISABLE_NOTIFIER = true;
 var elixir = require('laravel-elixir')
 require('laravel-elixir-karma')
 require('./tasks/angular.task.js')
 require('./tasks/bower.task.js')
 require('./tasks/ngHtml2Js.task.js')
-
-if (!elixir.config.production) {
-  require('./tasks/phpcs.task.js')
-}
 
 /*
  |--------------------------------------------------------------------------
@@ -48,9 +43,6 @@ elixir(function (mix) {
     .ngHtml2Js('./angular/**/*.html')
     .sass('./angular/**/*.scss', 'public/css')
     .version(assets)
-    .browserSync({
-      proxy: 'localhost:8000'
-    })
     .karma({
       jsDir: karmaJsDir
     })
