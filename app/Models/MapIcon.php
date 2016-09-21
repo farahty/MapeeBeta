@@ -21,7 +21,7 @@ class MapIcon extends Model
     }
 
     public function image(){
-        return $this->belongsTo('App\Models\image', 'image_id', 'id');
+        return $this->belongsTo('App\Models\Image', 'image_id', 'id');
     }
 
     public function sluggable()
