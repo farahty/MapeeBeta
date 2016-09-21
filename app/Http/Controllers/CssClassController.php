@@ -42,7 +42,7 @@ class CssClassController extends Controller
         $obj = new CssClass();
         $obj->title = $request->title;
         $obj->description = $request->description;
-        $obj->user_id = 7;
+        $obj->user_id = Auth::user()->id;
         $obj->save();
         return response()->success(compact('obj'));
     }
