@@ -28,6 +28,11 @@ class LevelController extends Controller
         return response()->success(compact('levels'));
     }
 
+    public function LevelPoints(){
+      $mapee = Level::with(['points','author','points.icon','points.icon.image'])->get();
+      return response()->success(compact('mapee'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -29,6 +29,7 @@ $api->group(['middleware' => ['api']], function ($api) {
     $api->post('auth/password/reset', 'Auth\PasswordResetController@reset');
     $api->get('iconcat/{id}', 'MapIconController@getIconsByCat');
 
+
 });
 
 $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
@@ -40,6 +41,7 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     $api->resource('category', 'IconCatController');
     $api->resource('map-icon', 'MapIconController');
     $api->resource('points', 'MapPointController');
+    $api->get('mapee', 'LevelController@LevelPoints');
 
 });
 

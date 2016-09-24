@@ -22,6 +22,10 @@ class Level extends Model
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
+    public function points(){
+        return $this->hasMany('App\Models\MapPoint', 'icon_level_id', 'id');
+    }
+
     public function sluggable()
     {
         return [
