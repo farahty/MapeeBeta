@@ -151,6 +151,17 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
           }
         }
       })
+      .state('app.icon_category_list', {
+        url: '/icon-category',
+        data: {
+          auth: true
+        },
+        views: {
+          'main@app': {
+            template: '<icon-category-list></icon-category-list>'
+          }
+        }
+      })
       .state('app.level_create', {
         url: '/level/create',
         data: {

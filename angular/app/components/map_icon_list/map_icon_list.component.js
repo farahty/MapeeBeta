@@ -3,6 +3,20 @@ class MapIconListController{
         'ngInject';
         this.API = API
         this.markers = new Array()
+        this.center = {
+                    lat: 31.9048856826,
+                    lon: 35.2043795586,
+                    zoom: 8
+                }
+        this.defaults ={
+          renderer: 'webgl',
+          view: {
+          projection: 'EPSG:4326',
+          extent: [ 34.1015625,31.1846091357,35.6286621094,33.3397070042 ],
+          minZoom : 8
+
+        }}
+        console.log(ol)
     }
 
     $onInit(){
