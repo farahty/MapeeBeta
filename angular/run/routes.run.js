@@ -1,8 +1,8 @@
-export function RoutesRun ($rootScope, $state, $auth, AclService, $timeout, API, ContextService) {
+export function RoutesRun ($rootScope, $state, $auth, AclService, $timeout, API, ContextService,editableOptions) {
   'ngInject'
 
   AclService.resume()
-
+  editableOptions.theme = 'bs3'
   /*eslint-disable */
   let deregisterationCallback = $rootScope.$on('$stateChangeStart', function (event, toState) {
     if (toState.data && toState.data.auth) {

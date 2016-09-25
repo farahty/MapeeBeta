@@ -141,7 +141,7 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         }
       })
       .state('app.css_class_show', {
-        url: '/css-class/show',
+        url: '/css-class/:id',
         data: {
           auth: true
         },

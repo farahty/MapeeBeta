@@ -18,5 +18,6 @@ angular.module('app.components', [
   'restangular', 'ngStorage','satellizer',
   'ui.bootstrap', 'mm.acl', 'datatables',
   'datatables.bootstrap','angularFileUpload',
-   'toastr','nemLogging','ui-leaflet','openlayers-directive','checklist-model'
+  'toastr','nemLogging','ui-leaflet','openlayers-directive',
+  'checklist-model','xeditable'
 ])

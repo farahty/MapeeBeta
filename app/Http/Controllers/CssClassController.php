@@ -55,7 +55,8 @@ class CssClassController extends Controller
      */
     public function show($id)
     {
-        //
+        $css = CssClass::with('author')->find($id);
+        return response()->success($css);
     }
 
     /**
@@ -78,7 +79,13 @@ class CssClassController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $css = CssClass::find($id);
+        $this->validate($request,CssClass::rules());
+        $css->title = $request->title;
+        $css->description = $request->description;
+        $css->user_id = $request->id;
+        $css->save();
+        return response()->success($css);
     }
 
     /**

@@ -28,6 +28,7 @@
     "satellizer": "^0.15.4",
     "ui-leaflet": "^1.0.1",
     "angular-openlayers-directive": "^1.15.4",
-    "checklist-model": "^0.10.0"
+    "checklist-model": "^0.10.0",
+    "angular-xeditable": "^0.4.0"
   }
 }

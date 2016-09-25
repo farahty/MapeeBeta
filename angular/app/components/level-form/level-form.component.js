@@ -4,7 +4,7 @@ class LevelFormController{
         this.API = API
         this.type = 'icon'
         this.errors = []
-		    this.toastr = toastr
+		this.toastr = toastr
         this.$state = $state
     }
     submit(){
