@@ -1,82 +1,75 @@
 class IconCategoryListController{
-    constructor(API){
+    constructor($scope, $state, $compile, DTOptionsBuilder, DTColumnBuilder, API){
         'ngInject';
         this.API = API
-        let baseLayer = new ol.layer.Tile({
-          source : new ol.source.OSM
-        })
-        baseLayer.set('layerTitle','Base Layer')
-        baseLayer.set('layerZoomMax',0)
-        baseLayer.set('layerZoomMin',21)
-        this.map = new ol.Map({
-          layers : [
-            baseLayer
-          ],
-          target : 'map',
-          view : new ol.View({
-            projection: 'EPSG:4326',
-            extent: [ 34.1015625,31.1846091357,35.6286621094,33.3397070042 ],
-            minZoom : 8,
-            center : [35.2043795586,31.9048856826],
-            zoom : 8
-          })
-        })
-        this.updateLayers = ()=>{
-            this.map.getLayers().forEach((obj)=>{
-              let zoom = this.map.getView().getZoom()
-              let max = obj.get('layerZoomMax')
-              let min = obj.get('layerZoomMin')
-              if(obj.get('layerTitle') != 'Base Layer'){
-                if(zoom <= min && zoom >= max){
-                  obj.setVisible(true)
-                }else {
-                  obj.setVisible(false)
-                }
-              }
-            })
-        }
+        this.$state = $state
 
-      this.map.on('moveend',this.updateLayers)
+        let category = this.API.all('category')
+        let createdRow = (row) => {
+            $compile(angular.element(row).contents())($scope)
+        }
+        let actionsHtml = (data) => {
+            return `
+                <a class="btn btn-xs btn-warning" ui-sref="app.userpermissionsedit({permissionId: ${data.id}})">
+                    <i class="fa fa-edit"></i>
+                </a>
+                &nbsp
+                <button class="btn btn-xs btn-danger" ng-click="vm.delete(${data.id})">
+                    <i class="fa fa-trash-o"></i>
+                </button>`
+        }
+            category.getList().then((response) => {
+            let dataSet = response.plain()
+            this.dtOptions = DTOptionsBuilder.newOptions()
+                .withOption('data', dataSet)
+                .withOption('createdRow', createdRow)
+                .withOption('responsive', true)
+                .withBootstrap()
+
+            this.dtColumns = [
+                DTColumnBuilder.newColumn('title').withTitle('Title'),
+                DTColumnBuilder.newColumn('description').withTitle('Description'),
+                DTColumnBuilder.newColumn('author.name').withTitle('Author'),
+                DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
+                    .renderWith(actionsHtml)
+            ]
+            this.displayTable = true
+        } , () => {
+            this.displayTable = false
+        })
+
     }
+    delete (categoryId) {
+        let API = this.API
+        let $state = this.$state
 
-    $onInit(){
-      this.API.all('mapee').getList().then((response)=>{
-        let mapee = response.plain()
-        for(let m = 0 ; m < mapee.length ; m++){
-          let data = mapee[m].points
-          let features = new Array()
-          for(let i = 0 ; i < data.length ; i++){
-              let feature = new ol.Feature(new ol.geom.Point([
-                parseFloat(data[i].long),
-                parseFloat(data[i].lat)
-              ]))
-              feature.setStyle(new ol.style.Style({
-                image : new ol.style.Icon({
-                  src   : data[i].icon.image.path,
-                  offset:[parseFloat(data[i].icon.offset_x),parseFloat(data[i].icon.offset_y)],
-                  size  :[parseFloat(data[i].icon.width),parseFloat(data[i].icon.height)]
-                }),
-                text : new ol.style.Text({
-                  text : data[i].title,
-                  offsetY: 10
+        swal({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this data!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonText: 'Yes, delete it!',
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
+            html: false
+        }, function () {
+            API.one('category', categoryId).remove()
+                .then(() => {
+                    swal({
+                        title: 'Deleted!',
+                        text: 'Icon Category has been deleted.',
+                        type: 'success',
+                        confirmButtonText: 'OK',
+                        closeOnConfirm: true
+                    }, function () {
+                        $state.reload()
+                    })
                 })
-              }))
-              features.push(feature)
-          }
-          let vectorSource = new ol.source.Vector({features: features})
-          let vector = new ol.layer.Vector({
-            source: vectorSource
-          })
-          vector.set('layerTitle',mapee[m].title)
-          vector.set('layerZoomMax',parseInt(mapee[m].level_start))
-          vector.set('layerZoomMin',parseInt(mapee[m].level_end))
-          vector.setVisible(false)
-          this.map.addLayer(vector)
-        }
-        this.updateLayers()
-      },(response)=>{
+        })
+    }
+    $onInit(){
 
-      })
     }
 }
 

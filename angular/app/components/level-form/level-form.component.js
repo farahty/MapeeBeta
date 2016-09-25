@@ -1,10 +1,11 @@
 class LevelFormController{
-    constructor(API,toastr){
+    constructor(API,toastr,$state){
         'ngInject';
         this.API = API
         this.type = 'icon'
         this.errors = []
-		this.toastr = toastr
+		    this.toastr = toastr
+        this.$state = $state
     }
     submit(){
         let level = this.API.all('levels')
@@ -17,7 +18,8 @@ class LevelFormController{
         }
         level.post(obj).then(() => {
             this.errors = []
-			this.toastr.success('Level has been added.','Success',{progressBar :true})			
+			      this.toastr.success('Level has been added.','Success',{progressBar :true})
+            this.$state.go('app.level_list')
         } , (res) => {
             this.errors = res.data.errors
         })
@@ -32,5 +34,3 @@ export const LevelFormComponent = {
     controllerAs: 'vm',
     bindings: {}
 }
-
-

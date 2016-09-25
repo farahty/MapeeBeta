@@ -1,10 +1,11 @@
 class CreateImageFormController{
-    constructor(API,toastr){
+    constructor(API,toastr,$state){
         'ngInject';
         this.API = API
         this.errors = []
-		this.toastr=toastr
-    }
+		    this.toastr=toastr
+        this.$state = $state
+      }
 
     submit(){
         let images = this.API.all('images')
@@ -15,9 +16,10 @@ class CreateImageFormController{
         }
         images.post(obj).then(() => {
             this.errors = []
+            this.toastr.success('Image Created Sucessfully','Success',{progressBar :true})
+            this.$state.go('app.image_list')
         } , (res) => {
             this.errors = res.data.errors
-			this.toastr.success('Image Created Sucessfully','Success',{progressBar :true})
         })
 
     }
@@ -29,5 +31,3 @@ export const CreateImageFormComponent = {
     controllerAs: 'vm',
     bindings: {}
 }
-
-

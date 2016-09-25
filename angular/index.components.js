@@ -1,3 +1,4 @@
+import {MapeeComponent} from './app/components/mapee/mapee.component';
 import {MapIconEditComponent} from './app/components/map_icon_edit/map_icon_edit.component';
 import {MapIconShowComponent} from './app/components/map_icon_show/map_icon_show.component';
 import {MapIconListComponent} from './app/components/map_icon_list/map_icon_list.component';
@@ -38,6 +39,7 @@ import { LoginFormComponent } from './app/components/login-form/login-form.compo
 import { RegisterFormComponent } from './app/components/register-form/register-form.component'
 
 angular.module('app.components')
+	.component('mapee', MapeeComponent)
 	.component('mapIconEdit', MapIconEditComponent)
 	.component('mapIconShow', MapIconShowComponent)
 	.component('mapIconList', MapIconListComponent)

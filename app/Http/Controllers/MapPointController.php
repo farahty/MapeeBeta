@@ -16,7 +16,7 @@ class MapPointController extends Controller
      */
     public function index()
     {
-        $points = MapPoint::with('icon','icon.image')->get();
+        $points = MapPoint::with('icon','icon.image','author')->get();
         // $features = array();
         // foreach ($points as $key => $value) {
         //   $features[] = array(
@@ -58,8 +58,8 @@ class MapPointController extends Controller
         $point->long = $request->long;
         $point->icon_id = $request->icon_id;
         $point->cat_id = $request->cat_id;
-        $point->title_level_id = $request->title_level_id;
         $point->icon_level_id = $request->icon_level_id;
+        $point->title_level_id = $request->icon_level_id;
         $point->user_id = Auth::user()->id;
         $point->save();
         return response()->success(compact('point'));
@@ -108,7 +108,6 @@ class MapPointController extends Controller
     public function destroy($id)
     {
         MapPoint::destroy($id);
-
         return response()->success('success');
     }
 }

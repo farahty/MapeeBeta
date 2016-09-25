@@ -34,7 +34,7 @@
                     <leaflet event-broadcast="vm.events" defaults="vm.defaults" markers="vm.markers" lf-center="vm.center" height="480px" class="form-conrol"></leaflet>
                     <span class="help-block">Point to the place of the point on the map </span>
                 </div>
-                
+
                 <div ng-class="(vm.errors.lat[0])? 'has-error': '' " class="form-group col-lg-6 col-md-6">
                     <label for="lat">Latitude :</label>
                     <input type="text" ng-model="vm.lat" class="form-control" placeholder="Latitude ..." id="lat">
@@ -81,19 +81,6 @@
                     </span>
                 </div>
 
-                <div ng-class="(vm.errors.title_level_id[0])? 'form-group has-error': 'form-group' ">
-                    <label for="title_level_id">Title Level :</label>
-                    <select class="form-control" ng-model="vm.title_level_id" data-placeholder="Pick a number" id="title_level_id">
-                        <option ng-repeat="item in vm.select_level_title" value="{{ item.id }}">{{item.title}}</option>
-
-                    </select>
-                    <span class="help-block" ng-if="vm.errors.title_level_id[0]" ng-repeat="error in vm.errors.title">
-                        {{ error }}
-                    </span>
-                </div>
-
-
-
                 <div ng-class="(vm.errors.description[0])? 'form-group has-error': 'form-group' ">
                     <label for="description">Description :</label>
                     <textarea class="form-control" id="description" rows="3" ng-model="vm.description"></textarea>
@@ -103,15 +90,10 @@
                 </div>
             </div>
             <div class="box-footer">
-                <a ui-sref="app.level_list" class="btn btn-danger"><i class="fa fa-angle-double-left"></i> Back</a>
-                <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New
+                <a ui-sref="app.map_point_list" class="btn btn-danger"><i class="fa fa-angle-double-left"></i> Back</a>
+                <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Save
                 </button>
             </div>
         </div>
     </form>
 </section>
-
-
-
-
-

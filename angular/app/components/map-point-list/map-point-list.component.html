@@ -1,9 +1,9 @@
 <section class="content-header">
-    <h1>Levels </h1> <small>Map Point levels</small>
+    <h1>Mapee Points </h1> <small>Map Points List</small>
     <ol class="breadcrumb">
         <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active"><i class="fa fa-copy"></i> Map Points List</li>
-        
+
     </ol>
 </section>
 
@@ -13,19 +13,14 @@
         <div class="box-header with-border">
             <h3 class="box-title">Map Points List</h3>
             <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                        class="fa fa-minus"></i>
-                </button>
+                <a ui-sref="app.map_point_create" class="btn btn-block btn-success btn-xs"><i class="fa fa-plus"></i> Add
+                    New</a>
             </div>
         </div>
         <div class="box-body">
-            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
-                <h4>{{alert.title}}</h4>
-                <p>{{alert.msg}}</p>
-            </div>
-            
-            <leaflet markers="vm.markers" lf-center="vm.center" height="480px" class="form-conrol"></leaflet>
-
+            <table datatable="" width="100%" class="table table-striped table-bordered" ng-if="vm.displayTable"
+                   dt-options="vm.dtOptions" dt-columns="vm.dtColumns"></table>
+            <mapee></mapee>
         </div>
         <div class="box-footer">
 

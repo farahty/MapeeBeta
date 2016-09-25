@@ -1,12 +1,13 @@
 class MapPointCreateController{
-    constructor(API,leafletData,$scope) {
+    constructor(API,leafletData,$scope,toastr,$state) {
         'ngInject';
         this.API = API
+        this.toastr=toastr
+        this.$state = $state
         this.errors = []
         this.select_cat = []
         this.select_icon = []
         this.select_level_icon = []
-        this.select_level_title = []
         let created_marker = {}
         this.events = {markers:{enable: [ 'dragend' ]}}
         this.API.all('category').getList().then((response)=>{
@@ -16,9 +17,7 @@ class MapPointCreateController{
         this.API.all('levels').getList().then((response)=>{
             this.select_level_icon = response
         })
-        this.API.all('levels').getList().then((response)=>{
-            this.select_level_title = response
-        })
+
         this.defaults = {
                 tileLayer: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 maxZoom: 14,
@@ -26,7 +25,7 @@ class MapPointCreateController{
             }
         this.center = {lat: 32,lng: 35.2,zoom: 8}
         this.markers = new Array()
-        $scope.$on("leafletDirectiveMap.click" , (event, args) => {           
+        $scope.$on("leafletDirectiveMap.click" , (event, args) => {
             let leafEvent = args.leafletEvent
             this.lat = leafEvent.latlng.lat
             this.long = leafEvent.latlng.lng
@@ -51,7 +50,6 @@ class MapPointCreateController{
         })
     }
     submit(){
-        let title_level = (this.title_level_id)? this.title_level_id : this.icon_level_id
         let obj = {
             title : this.title ,
             description : this.description ,
@@ -59,20 +57,17 @@ class MapPointCreateController{
             long : this.long,
             icon_id : this.icon_id,
             cat_id : this.cat_id,
-            title_level_id : title_level,
             icon_level_id : this.icon_level_id
         }
         this.API.all('points').post(obj).then(() => {
             this.errors = []
+            this.toastr.success('Mapee Point Created Sucessfully','Success',{progressBar :true})
+            this.$state.go('app.map_point_list')
         } , (res) => {
             this.errors = res.data.errors
         })
     }
 }
-
-
-
-
 
 export const MapPointCreateComponent = {
     templateUrl: './views/app/components/map-point-create/map-point-create.component.html',
@@ -80,5 +75,3 @@ export const MapPointCreateComponent = {
     controllerAs: 'vm',
     bindings: {}
 }
-
-

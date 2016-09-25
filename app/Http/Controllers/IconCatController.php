@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\IconCategory;
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 
 class IconCatController extends Controller
@@ -16,7 +16,7 @@ class IconCatController extends Controller
      */
     public function index()
     {
-        $category = IconCategory::all();
+        $category = IconCategory::with('author')->get();
 
         return response()->success(compact('category'));
     }
@@ -41,7 +41,13 @@ class IconCatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,IconCategory::rules());
+        $obj = new IconCategory();
+        $obj->title = $request->title;
+        $obj->description = $request->description;
+        $obj->user_id = Auth::user()->id;
+        $obj->save();
+        return response()->success(compact('obj'));
     }
 
     /**
@@ -86,6 +92,7 @@ class IconCatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        IconCategory::destroy($id);
+        return response()->success('success');
     }
 }
