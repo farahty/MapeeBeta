@@ -8,7 +8,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider,$locationProvide
   var getLayout = (layout) => {
     return `./views/app/pages/layout/${layout}.page.html`
   }
-  $locationProvider.html5Mode(true);
+ // $locationProvider.html5Mode(true);
   $urlRouterProvider.otherwise('/')
 
   $stateProvider
