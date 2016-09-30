@@ -1,5 +1,15 @@
 <div ui-view="header"></div>
 <div class="content-wrapper">
-    <div ui-view="main"></div>
+    <div ui-view="main" class="anim-in-out anim-slide-below-fade" 
+    data-anim-sync="true" data-anim-speed="1200"
+    ng-style="{
+				'-webkit-transition-duration': '1200ms',
+				'-moz-transition-duration': '1200ms',
+				'-ms-transition-duration': '1200ms',
+				'-o-transition-duration': '1200ms',
+				'transition-duration': '1200ms'
+			}">
+			 
+			</div>
 </div>
 <div ui-view="footer"></div>

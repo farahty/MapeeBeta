@@ -1,4 +1,4 @@
-export function RoutesConfig ($stateProvider, $urlRouterProvider) {
+export function RoutesConfig($stateProvider, $urlRouterProvider,$locationProvider) {
   'ngInject'
 
   var getView = (viewName) => {
@@ -8,7 +8,7 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
   var getLayout = (layout) => {
     return `./views/app/pages/layout/${layout}.page.html`
   }
-
+  $locationProvider.html5Mode(true);
   $urlRouterProvider.otherwise('/')
 
   $stateProvider
@@ -42,183 +42,194 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
       }
     })
     .state('app.image_create', {
-        url: '/image/create',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<create-image-form></create-image-form>'
-          }
+      url: '/image/create',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<create-image-form></create-image-form>'
         }
-      })
-      .state('app.map_point_create', {
-        url: '/map-point/create',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<map-point-create></map-point-create>'
-          }
+      }
+    })
+    .state('app.map_point_create', {
+      url: '/map-point/create',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<map-point-create></map-point-create>'
         }
-      })
-      .state('app.map_point_list', {
-        url: '/map-point',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<map-point-list></map-point-list>'
-          }
+      }
+    })
+    .state('app.map_point_list', {
+      url: '/map-point',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<map-point-list></map-point-list>'
         }
-      })
-      .state('app.map_point_show', {
-        url: '/map-point/show',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<map-point-show></map-point-show>'
-          }
+      }
+    })
+    .state('app.map_point_show', {
+      url: '/map-point/show',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<map-point-show></map-point-show>'
         }
-      })
-      .state('app.map_icon_list', {
-        url: '/map-icon',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<map-icon-list></map-icon-list>'
-          }
+      }
+    })
+    .state('app.map_icon_list', {
+      url: '/map-icon',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<map-icon-list></map-icon-list>'
         }
-      })
-      .state('app.map_icon_create', {
-        url: '/map-icon/create',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<map-icon-create></map-icon-create>'
-          }
+      }
+    })
+    .state('app.map_icon_create', {
+      url: '/map-icon/create',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<map-icon-create></map-icon-create>'
         }
-      })
-      .state('app.map-icon_show', {
-        url: '/map-icon/show',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<map-icon-show></map-icon-show>'
-          }
+      }
+    })
+    .state('app.map-icon_show', {
+      url: '/map-icon/show',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<map-icon-show></map-icon-show>'
         }
-      })
-      .state('app.css_class_list', {
-        url: '/css-class',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<css-class-list></css-class-list>'
-          }
+      }
+    })
+    .state('app.css_class_list', {
+      url: '/css-class',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<css-class-list></css-class-list>'
         }
-      })
-      .state('app.css_class_create', {
-        url: '/css-class/create',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<css-class-form></css-class-form>'
-          }
+      }
+    })
+    .state('app.css_class_create', {
+      url: '/css-class/create',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<css-class-form></css-class-form>'
         }
-      })
-      .state('app.css_class_show', {
-        url: '/css-class/:id',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<css-class-show></css-class-show>'
-          }
+      }
+    })
+    .state('app.css_class_show', {
+      url: '/css-class/:id',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<css-class-show></css-class-show>'
         }
-      })
-      .state('app.icon_category_list', {
-        url: '/icon-category',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<icon-category-list></icon-category-list>'
-          }
+      }
+    })
+    .state('app.icon_category_show', {
+      url: '/icon-category/:id',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<icon-category-show></icon-category-show>'
         }
-      })
-      .state('app.icon_category_create', {
-        url: '/icon-category/create',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<icon-category-form></icon-category-form>'
-          }
+      }
+    })
+    .state('app.icon_category_list', {
+      url: '/icon-category',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<icon-category-list></icon-category-list>'
         }
-      })
-      .state('app.level_create', {
-        url: '/level/create',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<level-form></level-form>'
-          }
+      }
+    })
+    .state('app.icon_category_create', {
+      url: '/icon-category/create',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<icon-category-form></icon-category-form>'
         }
-      })
-      .state('app.level_list', {
-        url: '/level',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<level-list></level-list>'
-          }
+      }
+    })
+    .state('app.level_create', {
+      url: '/level/create',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<level-form></level-form>'
         }
-      })
-      .state('app.level_show', {
-        url: '/level/show',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<level-show></level-show>'
-          }
+      }
+    })
+    .state('app.level_list', {
+      url: '/level',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<level-list></level-list>'
         }
-      })
+      }
+    })
+    .state('app.level_show', {
+      url: '/level/:id',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<level-show></level-show>'
+        }
+      }
+    })
 
-      .state('app.image_list', {
-        url: '/image',
-        data: {
-          auth: true
-        },
-        views: {
-          'main@app': {
-            template: '<image-list></image-list>'
-          }
+  .state('app.image_list', {
+      url: '/image',
+      data: {
+        auth: true
+      },
+      views: {
+        'main@app': {
+          template: '<image-list></image-list>'
         }
-      })
-      .state('app.profile', {
+      }
+    })
+    .state('app.profile', {
       url: '/profile',
       data: {
         auth: true
@@ -339,7 +350,7 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
       }
     })
 
-    .state('login', {
+  .state('login', {
       url: '/login',
       views: {
         'layout': {

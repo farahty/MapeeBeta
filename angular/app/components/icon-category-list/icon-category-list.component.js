@@ -10,7 +10,7 @@ class IconCategoryListController{
         }
         let actionsHtml = (data) => {
             return `
-                <a class="btn btn-xs btn-warning" ui-sref="app.userpermissionsedit({permissionId: ${data.id}})">
+                <a class="btn btn-xs btn-warning" ui-sref="app.icon_category_show({id: ${data.id}})">
                     <i class="fa fa-edit"></i>
                 </a>
                 &nbsp

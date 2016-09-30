@@ -3,6 +3,7 @@ class CssClassShowController{
         'ngInject';
         this.$state = $state
         this.toastr = toastr
+        this.API = API
         this.CSS = API.one('css',$stateParams.id)
         this.CSS.get().then((response)=>{
             this.css = API.copy(response)
@@ -10,7 +11,8 @@ class CssClassShowController{
     }
 
     update(){
-        this.CSS.put(this.css.data).then(()=>{
+        this.CSS.put(this.css.data).then((response)=>{
+            this.css = this.API.copy(response)
             this.toastr.success('Css Class Updated Successfully.','Success',{progressBar :true})
         },(response)=>{
             this.toastr.error(response.data.message , 'Error!',{progressBar :true})

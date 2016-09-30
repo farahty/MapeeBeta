@@ -166,6 +166,7 @@ return [
         Bican\Roles\RolesServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
+        
 
     ],
 

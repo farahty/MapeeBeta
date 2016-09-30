@@ -22,4 +22,24 @@ class Controller extends BaseController
             throw new ValidationHttpException($validator->errors());
         }
     }
+    public function logs($obj){
+        $logs = array();
+        foreach($obj as $log){
+            foreach($log->new_value as $key => $value){
+                //$data = $log;
+                $data['id'] = $log['id'];
+                $data['type'] = $log['type'];
+                $data['ip'] = $log['ip'];
+                $data['elapsed_time'] = $log['elapsed_time'];
+                $data['user'] = $log['user'];
+                $data['created_at'] = $log['created_at'];
+                $data['updated_at'] = $log['updated_at'];
+                $data['new'] = $value;
+                $data['field'] = $key;
+                $data['old'] = $log['old_value'][$key];
+                array_push($logs,$data);
+            }
+        }
+        return $logs;
+    }
 }

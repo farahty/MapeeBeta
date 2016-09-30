@@ -58,7 +58,10 @@ class IconCatController extends Controller
      */
     public function show($id)
     {
-        //
+        $obj = IconCategory::with('author')->find($id);
+        $obj->audit = $this->logs($obj->logs);
+        unset($obj->logs);
+        return response()->success($obj);
     }
 
     /**
@@ -81,7 +84,16 @@ class IconCatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $obj = IconCategory::find($id);
+        $this->validate($request,IconCategory::rules());
+        $obj->title = $request->title;
+        $obj->description = $request->description;
+        $obj->user_id = $request->user_id;
+        $obj->save();
+        $obj = IconCategory::with('author')->find($id);
+        $obj->audit = $this->logs($obj->logs);
+        unset($obj->logs);
+        return response()->success($obj);
     }
 
     /**

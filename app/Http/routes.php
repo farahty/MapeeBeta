@@ -37,7 +37,7 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     $api->resource('images', 'ImageController');
     $api->resource('levels', 'LevelController');
     $api->resource('category', 'IconCatController');
-    $api->resource('map-icon', 'MapIconController');
+    $api->resource('icons', 'MapIconController');
     $api->resource('points', 'MapPointController');
     $api->get('mapee', 'LevelController@LevelPoints');
     $api->resource('css', 'CssClassController');
