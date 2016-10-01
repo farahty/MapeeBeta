@@ -19,5 +19,6 @@ angular.module('app.components', [
   'ui.bootstrap', 'mm.acl', 'datatables',
   'datatables.bootstrap','angularFileUpload',
   'toastr','nemLogging','ui-leaflet','openlayers-directive',
-  'checklist-model','xeditable','ngAnimate','anim-in-out'
+  'checklist-model','xeditable','ngAnimate','anim-in-out',
+  'ui.select', 'ngSanitize','rzModule'
 ])

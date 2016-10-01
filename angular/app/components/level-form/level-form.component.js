@@ -6,6 +6,8 @@ class LevelFormController{
         this.errors = []
 		this.toastr = toastr
         this.$state = $state
+        this.level_start = 7
+        this.level_end = 15
     }
     submit(){
         let level = this.API.all('levels')

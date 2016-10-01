@@ -4,6 +4,15 @@ class LevelShowController{
         this.$state = $state
         this.toastr = toastr
         this.API = API
+        this.slider = {
+            floor: 1, 
+            ceil: 21 ,
+            showTicksValues: true,
+            onEnd : (id)=>{
+                this.update()
+            }
+
+        }
         this.provider = API.one('levels',$stateParams.id)
         this.provider.get().then((response)=>{
             this.level = API.copy(response)
@@ -11,6 +20,7 @@ class LevelShowController{
     }
 
     update(){
+        
         this.provider.put(this.level.data).then((response)=>{
             this.level = this.API.copy(response)
             this.toastr.success('Map Level Updated Successfully.','Success',{progressBar :true})

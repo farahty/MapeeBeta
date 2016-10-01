@@ -42,6 +42,8 @@ class LevelListController{
             this.displayTable = false
         })
 
+
+
     }
 
     delete (levelId) {

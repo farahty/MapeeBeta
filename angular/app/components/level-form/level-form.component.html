@@ -30,34 +30,19 @@
                         {{ error }}
                     </span>
                 </div>
-
-                <div ng-class="(vm.errors.level_start[0])? 'form-group has-error': 'form-group' ">
-                    <label for="level_start">Level Start :</label>
-                    <input type="number" ng-model="vm.level_start" class="form-control" placeholder="Title..." id="level_start">
-                    <span class="help-block" ng-if="vm.errors.level_start[0]" ng-repeat="error in vm.errors.level_start">
-                        {{ error }}
-                    </span>
-                </div>
-
-                <div ng-class="(vm.errors.level_end[0])? 'form-group has-error': 'form-group' ">
-                    <label for="level_end">Level End :</label>
-                    <input type="number" ng-model="vm.level_end" class="form-control" placeholder="level_end..." id="level_end">
-                    <span class="help-block" ng-if="vm.errors.level_end[0]" ng-repeat="error in vm.errors.level_end">
-                        {{ error }}
-                    </span>
-                </div>
-
                 <div class="form-group">
-
-                    <label class="radio-inline">
-                        <input type="radio" name="type" ng-model="vm.type" value="icon" checked="true"> Icon
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="type" ng-model="vm.type" value="level"> Level
-                    </label>
+                    <label for="level-slider">Max/Min Zoom</label>
+                    <rzslider rz-slider-model="vm.level_start"
+                              rz-slider-high="vm.level_end"
+                              rz-slider-options="{floor: 1, ceil: 21 ,
+                              showTicksValues: true}" 
+                              id="level-slider"></rzslider>
+                    <span class="help-block">
+                        Max zoom and Min zoom For The layer on the Mapee
+                    </span>
 
                 </div>
-
+              
                 <div ng-class="(vm.errors.description[0])? 'form-group has-error': 'form-group' ">
                     <label for="description">Description :</label>
                     <textarea class="form-control" id="description" rows="3" ng-model="vm.description"></textarea>
@@ -74,3 +59,4 @@
         </div>
     </form>
 </section>
+

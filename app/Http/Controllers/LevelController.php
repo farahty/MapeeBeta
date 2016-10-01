@@ -101,6 +101,9 @@ class LevelController extends Controller
         $this->validate($request,Level::rules());
         $obj->title = $request->title;
         $obj->description = $request->description;
+        $obj->description = $request->description;
+        $obj->level_start = $request->level_start;
+        $obj->level_end = $request->level_end;
         $obj->user_id = $request->user_id;
         $obj->save();
         $obj = Level::with('author')->find($id);

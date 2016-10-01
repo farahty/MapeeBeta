@@ -30,6 +30,8 @@
     "angular-openlayers-directive": "^1.15.4",
     "checklist-model": "^0.10.0",
     "angular-xeditable": "^0.4.0",
-    "angular-ui-router-anim-in-out": "^1.0.2"
+    "angular-ui-router-anim-in-out": "^1.0.2",
+    "angular-ui-select": "^0.19.4",
+    "angularjs-slider": "^5.5.1"
   }
 }
