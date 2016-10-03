@@ -24,7 +24,7 @@ constructor($scope, $state, $compile, DTOptionsBuilder, DTColumnBuilder, API){
                 width: ${data.icon.width}px;
                 height: ${data.icon.height}px;
                 background-image : url('${data.icon.image.path}');
-                background-position: ${data.icon.offset_x}px ${data.icon.offset_y}px; 
+                background-position: ${data.icon.offset_y}px ${data.icon.offset_x}px;
             "></div>
             `
         }

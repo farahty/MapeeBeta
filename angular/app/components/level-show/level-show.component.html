@@ -92,7 +92,7 @@
                         <tr scope="row" ng-repeat="log in vm.level.data.audit | orderBy : '-created_at'">
                             <td>{{log.user.name}}</td>
                             <td>{{log.type}}</td>
-                            <td>{{log.field}}</td>
+                            <td>{{log.field | capitalize}}</td>
                             <td>{{log.old}}</td>
                             <td>{{log.new}}</td>
                             <td>{{log.ip}}</td>
